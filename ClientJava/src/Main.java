@@ -14,7 +14,7 @@ public class Main {
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
         // Send message to the server
-        out.println("Ciao pelle!");
+        out.println("ciaoooo galielo galidiego");
 
         // Receive response from the server
         String response = in.readLine();
