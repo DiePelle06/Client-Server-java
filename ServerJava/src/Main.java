@@ -21,13 +21,25 @@ public class Main
 			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
+			boolean go = true;
+			
 			// Read message from client
-			String message = in.readLine();
-			System.out.println("Client says: " + message);
+			while(go)
+			{
+				String message = in.readLine();
+				System.out.println("Client says: " + message);
 
-			// Send response to the client
-			out.println(message.toUpperCase());
-
+				// Send response to the client
+				if(message != "exit")
+				{
+					out.println(message.toUpperCase());
+				}
+				else
+				{
+					go = false;
+				}
+			}
+			
 			// Close the client socket
 			clientSocket.close();
 			// Close the server socket
