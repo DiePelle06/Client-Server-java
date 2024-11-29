@@ -12,14 +12,16 @@ public class Main
 			boolean go = true;
 			String message;
 			
+			BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+			
 			boolean fine = false;
+			
+			// Accept incoming client connection
+			ServerSocket serverSocket = new ServerSocket(31124);
 			
 			while(!fine)
 			{
-				// Accept incoming client connection
-				ServerSocket serverSocket = new ServerSocket(31124);
 				System.out.println("Server is running and waiting for client connection...");
-				
 				// Accept incoming client connection
 				Socket clientSocket = serverSocket.accept();
 				System.out.println("Client connected!");
@@ -45,6 +47,16 @@ public class Main
 						go = false;
 					}
 				}
+				
+				System.out.println("Vuoi continuare? \nY[1] N[0]");
+				int scelta = Integer.valueOf(console.readLine());
+				
+				if(scelta == 0)
+				{
+					fine = true;
+				}
+				
+				go = true;
 				
 				if(fine)
 				{
