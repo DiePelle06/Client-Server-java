@@ -24,9 +24,11 @@ public class Main
 			// Read message from client
 			String message = in.readLine();
 			System.out.println("Client says: " + message);
+			
+			message.toUpperCase();
 
 			// Send response to the client
-			out.println("ciao scimmia");
+			out.println(message);
 
 			// Close the client socket
 			clientSocket.close();
