@@ -4,7 +4,7 @@ import java.net.*;
 public class Main {
     public static void main(String args[]) throws IOException
     {
-        // create a socket to connect to the server running on localhost at port number 9090
+        // create a socket to connect to the server running  at port number 9090
         Socket socket = new Socket("10.130.1.124", 31124);
        
         // Setup output stream to send data to the server
