@@ -22,28 +22,31 @@ public class Main
 			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
 			boolean go = true;
+			String message;
 			
 			// Read message from client
 			while(go)
 			{
-				String message = in.readLine();
+				message = in.readLine();
 				System.out.println("Client says: " + message);
 
 				// Send response to the client
-				if(message != "exit")
+				if(!message.equalsIgnoreCase("exit"))
 				{
 					out.println(message.toUpperCase());
+					System.out.println("i sent : " + message.toUpperCase());
 				}
 				else
 				{
 					go = false;
+					// Close the client socket
+					clientSocket.close();
+					// Close the server socket
+					serverSocket.close();
+					
+					System.out.println("connection closed");
 				}
 			}
-			
-			// Close the client socket
-			clientSocket.close();
-			// Close the server socket
-			serverSocket.close();
 		}
 		catch (IOException e)
 		{
