@@ -7,10 +7,10 @@ public class Main
 {
 	public static void main(String[] args) 
 	{
-		// create a server socket on port number 9090
 		try
 		{
-			ServerSocket serverSocket = new ServerSocket(9090);
+			// create a server socket on port number 31124
+			ServerSocket serverSocket = new ServerSocket(31124);
 			System.out.println("Server is running and waiting for client connection...");
 
 			// Accept incoming client connection
