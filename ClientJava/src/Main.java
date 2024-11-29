@@ -19,6 +19,9 @@ public class Main {
         // Receive response from the server
         String response = in.readLine();
         System.out.println("Server says: " + response);
+        
+        // Chiusura della comunicazione
+        out.println("exit");
 
         // Close the socket
         socket.close();
