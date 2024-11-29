@@ -9,36 +9,45 @@ public class Main
 	{
 		try
 		{
-			// create a server socket on port number 31124
-			ServerSocket serverSocket = new ServerSocket(31124);
-			System.out.println("Server is running and waiting for client connection...");
-
-			// Accept incoming client connection
-			Socket clientSocket = serverSocket.accept();
-			System.out.println("Client connected!");
-
-			// Setup input and output streams for communication with the client
-			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-
 			boolean go = true;
 			String message;
 			
-			// Read message from client
-			while(go)
+			boolean fine = false;
+			
+			while(!fine)
 			{
-				message = in.readLine();
-				System.out.println("Client says: " + message);
-
-				// Send response to the client
-				if(!message.equalsIgnoreCase("exit"))
+				// Accept incoming client connection
+				ServerSocket serverSocket = new ServerSocket(31124);
+				System.out.println("Server is running and waiting for client connection...");
+				
+				// Accept incoming client connection
+				Socket clientSocket = serverSocket.accept();
+				System.out.println("Client connected!");
+				
+				// Setup input and output streams for communication with the client
+				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+			
+				// Read message from client
+				while(go)
 				{
-					out.println(message.toUpperCase());
-					System.out.println("i sent : " + message.toUpperCase());
+					message = in.readLine();
+					System.out.println("Client says: " + message);
+	
+					// Send response to the client
+					if(!message.equalsIgnoreCase("exit"))
+					{
+						out.println(message.toUpperCase());
+						System.out.println("i sent : " + message.toUpperCase());
+					}
+					else
+					{
+						go = false;
+					}
 				}
-				else
+				
+				if(fine)
 				{
-					go = false;
 					// Close the client socket
 					clientSocket.close();
 					// Close the server socket
