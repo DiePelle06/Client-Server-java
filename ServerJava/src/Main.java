@@ -26,7 +26,7 @@ public class Main
 			System.out.println("Client says: " + message);
 
 			// Send response to the client
-			out.println("Message received by the server.");
+			out.println("ciao scimmia omessesuale");
 
 			// Close the client socket
 			clientSocket.close();
